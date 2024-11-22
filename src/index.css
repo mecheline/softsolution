@@ -10,3 +10,9 @@
 .css-1qltlow-MuiTabs-indicator {
   background-color: #6c5dd3 !important ;
 }
+
+@media (min-width: 600px) {
+  .css-awgou1 {
+    min-height: 0px;
+  }
+}

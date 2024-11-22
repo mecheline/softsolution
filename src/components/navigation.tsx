@@ -69,7 +69,9 @@ export default function Navbar(props: Props) {
   const handleItemClick = (index: number) => {
     setActiveIndex(index);
     handleClose();
-    handleDrawerClose();
+    if (mobileOpen) {
+      setMobileOpen(!mobileOpen);
+    }
   };
 
   const pages = [

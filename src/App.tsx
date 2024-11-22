@@ -27,7 +27,7 @@ export default function App() {
               flexGrow: 1,
               p: 3,
               width: { sm: `calc(100% - ${drawerWidth}px)` },
-              mt: 2,
+              mt: 8,
               backgroundColor: "#F8F9FB",
             }}
           >

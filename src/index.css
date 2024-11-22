@@ -1,0 +1,12 @@
+/* @media (min-width: 600px) {
+  .css-1ygil4i-MuiToolbar-root {
+    min-height: 0px !important;
+  }
+} */
+
+.css-1ygil4i-MuiToolbar-root {
+  min-height: 0px !important;
+}
+.css-1qltlow-MuiTabs-indicator {
+  background-color: #6c5dd3 !important ;
+}

@@ -267,7 +267,7 @@ export default function Navbar(props: Props) {
             }}
           >
             <Box sx={{ display: { xs: "flex", sm: "none" } }}>
-              <img src="/appBar/Logo.svg" />
+              <img alt="logo" src="/appBar/Logo.svg" />
             </Box>
             <Box
               sx={{
@@ -443,7 +443,7 @@ export default function Navbar(props: Props) {
           open
         >
           <Box sx={{ p: 2 }}>
-            <img src="/appBar/Logo.svg" />
+            <img alt="logo" src="/appBar/Logo.svg" />
           </Box>
           {drawer}
         </Drawer>

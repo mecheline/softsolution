@@ -14,17 +14,7 @@ import Menu from "./components/screens/Menu";
 
 const drawerWidth = 240;
 
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * Remove this when copying and pasting into your project.
-   */
-  window?: () => Window;
-}
-
-export default function App(props: Props) {
-  // Remove this const when copying and pasting into your project.
-
+export default function App() {
   return (
     <ThemeWrapper>
       <Router>

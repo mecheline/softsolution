@@ -3,7 +3,6 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import {
   Box,
-  createTheme,
   IconButton,
   ImageListItemBar,
   Paper,
@@ -13,37 +12,12 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import InfoIcon from "@mui/icons-material/Info";
 
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
   value: number;
 }
-
-const theme = createTheme({
-  components: {
-    MuiTab: {
-      styleOverrides: {
-        root: {
-          "&.Mui-selected": {
-            color: "red",
-          },
-          "&:hover": {
-            color: "red",
-          },
-        },
-      },
-    },
-    MuiTabs: {
-      styleOverrides: {
-        indicator: {
-          backgroundColor: "red",
-        },
-      },
-    },
-  },
-});
 
 function CustomTabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
@@ -59,13 +33,6 @@ function CustomTabPanel(props: TabPanelProps) {
       {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
 }
 
 function srcset(image: string, size: number, rows = 1, cols = 1) {

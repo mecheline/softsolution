@@ -19,7 +19,7 @@ import Typography from "@mui/material/Typography";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import { Alert, Avatar, Badge, Collapse, Menu, MenuItem } from "@mui/material";
+import { Alert, Avatar, Badge, Collapse } from "@mui/material";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined";
@@ -34,10 +34,6 @@ import { Link } from "react-router-dom";
 const drawerWidth = 240;
 
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * Remove this when copying and pasting into your project.
-   */
   window?: () => Window;
 }
 
@@ -70,7 +66,7 @@ export default function Navbar(props: Props) {
 
   const handleItemClick = (index: number) => {
     setActiveIndex(index);
-    handleClose(); // Optionally close the menu after item is clicked
+    handleClose();
     handleDrawerClose();
   };
 
@@ -87,10 +83,6 @@ export default function Navbar(props: Props) {
       icon: <ShoppingBagOutlinedIcon />,
       childIcon: <KeyboardArrowRightOutlinedIcon />,
       children: true,
-      childDropdown: [
-        { title: "Item one", href: "" },
-        { title: "Item two", href: "" },
-      ],
     },
     {
       title: "Analytics",
@@ -111,14 +103,10 @@ export default function Navbar(props: Props) {
       children: false,
     },
   ];
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(null);
-  };
 
   const drawer = (
     <div>
       <Toolbar />
-      {/* <Divider /> */}
       <List>
         {pages.map((text, index) => (
           <Link
@@ -138,14 +126,14 @@ export default function Navbar(props: Props) {
                     color: "#fff",
                     borderRadius: "12px",
                     "& .MuiListItemIcon-root": {
-                      color: "#fff", // Change icon color on hover
+                      color: "#fff",
                     },
                   },
                 }}
               >
                 <ListItemIcon
                   sx={{
-                    color: activeIndex === index ? "white" : "inherit", // Set icon color to white when active
+                    color: activeIndex === index ? "white" : "inherit",
                   }}
                 >
                   {text.icon}
@@ -154,7 +142,7 @@ export default function Navbar(props: Props) {
                 {text.children ? (
                   <ListItemIcon
                     sx={{
-                      color: activeIndex === index ? "white" : "inherit", // Set icon color to white when active
+                      color: activeIndex === index ? "white" : "inherit",
                     }}
                   >
                     {text.childIcon}
@@ -237,13 +225,11 @@ export default function Navbar(props: Props) {
     </div>
   );
 
-  // Remove this const when copying and pasting into your project.
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
   const handleSearch = (query: string) => {
     console.log("Searching for:", query);
-    // Implement your search logic here
   };
 
   return (
@@ -375,7 +361,6 @@ export default function Navbar(props: Props) {
         }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           container={container}
           variant="temporary"
@@ -383,7 +368,7 @@ export default function Navbar(props: Props) {
           onTransitionEnd={handleDrawerTransitionEnd}
           onClose={handleDrawerClose}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: "block", sm: "none" },

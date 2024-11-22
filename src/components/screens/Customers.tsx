@@ -1,9 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
 
-type Props = {};
-
-const Customers = (props: Props) => {
+const Customers = () => {
   return (
     <Box
       sx={{

@@ -1,7 +1,4 @@
-import { Box, Paper, Typography } from "@mui/material";
-import React from "react";
-
-type Props = {};
+import { Box, Typography } from "@mui/material";
 
 const customerData = [
   {
@@ -41,7 +38,7 @@ const customerData = [
   },
 ];
 
-const Customers = (props: Props) => {
+const Customers = () => {
   return (
     <Box>
       <Typography

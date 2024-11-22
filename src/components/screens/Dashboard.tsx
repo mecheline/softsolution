@@ -10,8 +10,6 @@ import Map from "../dashboardComponents/Map";
 import Customers from "../dashboardComponents/Customers";
 import QuiltedImageList from "../dashboardComponents/Menu";
 
-type Props = {};
-
 const data = [
   {
     icon: <SummarizeOutlinedIcon />,
@@ -63,7 +61,7 @@ const donutChartData = {
   labels: ["Daily customers", "Weekly new customers"],
 };
 
-const Dashboard = (props: Props) => {
+const Dashboard = () => {
   return (
     <Box>
       <Box

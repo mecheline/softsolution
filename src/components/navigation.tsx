@@ -45,6 +45,8 @@ export default function Navbar(props: Props) {
   const [activeIndex, setActiveIndex] = React.useState<number>(0);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  console.log(anchorEl);
+
   const handleDrawerClose = () => {
     setIsClosing(true);
     setMobileOpen(false);

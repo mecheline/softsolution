@@ -88,6 +88,7 @@ export default function QuiltedImageList() {
                     width: "100%",
                     height: isMobile ? "auto" : "100%",
                     objectFit: "cover",
+                    cursor: "pointer",
                   }}
                 />
                 <ImageListItemBar
@@ -259,6 +260,7 @@ const itemData = [
     title: "Dark & Stormy",
     category: "Breakfast",
     price: 90.58,
+    qty: 456,
     rows: 2,
     cols: 1,
   },

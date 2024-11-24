@@ -23,15 +23,16 @@ function CustomTabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div
+    <Box
+      sx={{ width: "100%" }}
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </div>
+      {value === index && <Box sx={{ p: 1 }}>{children}</Box>}
+    </Box>
   );
 }
 
@@ -46,6 +47,8 @@ function srcset(image: string, size: number, rows = 1, cols = 1) {
 
 export default function QuiltedImageList() {
   const [value, setValue] = React.useState(0);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     console.log(event);
@@ -56,8 +59,6 @@ export default function QuiltedImageList() {
   const tabLabels = ["All Category", "Breakfast", "Lunch", "Dinner"];
 
   const rightTabContentsFunc = () => {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
     return [
       <Box sx={{ width: "100%" }}>
         <ImageList
@@ -81,7 +82,11 @@ export default function QuiltedImageList() {
                 )}
                 alt={item.title}
                 loading="lazy"
-                style={{ width: "100%", height: isMobile ? "auto" : "100%" }}
+                style={{
+                  width: "100%",
+                  height: isMobile ? "auto" : "100%",
+                  objectFit: "cover",
+                }}
               />
               <ImageListItemBar
                 sx={{
@@ -96,7 +101,6 @@ export default function QuiltedImageList() {
                 actionIcon={
                   <IconButton
                     sx={{
-                      //   color: "rgba(255, 255, 255, 0.54)",
                       fontWeight: 500,
                       fontSize: "14px",
                       lineHeight: "21px",
@@ -133,65 +137,57 @@ export default function QuiltedImageList() {
       </Box>,
     ];
   };
+
   return (
     <Box sx={{ width: "100%", mt: 2 }}>
       <Paper>
-        <Box>
-          <Box
+        <Box
+          sx={{
+            borderBottom: 1,
+            borderColor: "divider",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography
             sx={{
-              borderBottom: 1,
-              borderColor: "divider",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
+              p: 2,
+              fontWeight: 700,
+              fontSize: "18px",
+              lineHeight: "24px",
             }}
           >
-            <Typography
-              variant="h6"
-              component="h1"
-              sx={{
-                p: 2,
-                fontWeight: 700,
-                fontSize: "18px",
-                lineHeight: "24px",
-              }}
-            >
-              {title}
-            </Typography>
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              aria-label="custom tabs example"
-              variant="scrollable"
-            >
-              {tabLabels.map((label, index) => (
-                <Tab
-                  sx={{
-                    fontWeight: 600,
-                    fontSize: "15px",
-                    lineHeight: "22px",
-                    letterSpacing: "-0.1px",
-                    "&:hover": {
-                      color: "#6C5DD3",
-                    },
-                    "&.Mui-selected": {
-                      color: "#6C5DD3",
-                    },
-                    MuiTabs: {
-                      styleOverrides: {
-                        indicator: {
-                          backgroundColor: "red",
-                        },
-                      },
-                    },
-                  }}
-                  key={index}
-                  label={label}
-                />
-              ))}
-            </Tabs>
-          </Box>
+            {title}
+          </Typography>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="custom tabs example"
+            variant={isMobile ? "scrollable" : "standard"}
+            scrollButtons="auto"
+          >
+            {tabLabels.map((label, index) => (
+              <Tab
+                sx={{
+                  fontWeight: 600,
+                  fontSize: "15px",
+                  lineHeight: "22px",
+                  letterSpacing: "-0.1px",
+                  "&:hover": {
+                    color: "#6C5DD3",
+                  },
+                  "&.Mui-selected": {
+                    color: "#6C5DD3",
+                  },
+                }}
+                key={index}
+                label={label}
+              />
+            ))}
+          </Tabs>
         </Box>
+
         {rightTabContentsFunc().map((content, index) => (
           <CustomTabPanel key={index} value={value} index={index}>
             {content}

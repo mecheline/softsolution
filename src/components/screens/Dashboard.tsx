@@ -1,4 +1,4 @@
-import { Box, Divider, Paper, Typography } from "@mui/material";
+import { Box, Container, Divider, Paper, Typography } from "@mui/material";
 import SummarizeOutlinedIcon from "@mui/icons-material/SummarizeOutlined";
 import AssessmentOutlinedIcon from "@mui/icons-material/AssessmentOutlined";
 import GroupsTwoToneIcon from "@mui/icons-material/GroupsTwoTone";
@@ -63,57 +63,58 @@ const donutChartData = {
 
 const Dashboard = () => {
   return (
-    <Box>
+    <Container>
       <Box
         sx={{
           display: "flex",
-
           flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-            width: { xs: "46%", md: "23%" },
-            p: 2,
-            background: "",
-          },
+          width: "100%",
+          gap: 2,
+          //   "& > :not(style)": {
+          //     m: 1,
+          //     p: 2,
+          //   },
         }}
       >
         {data.map((item) => (
-          <Paper elevation={4} key={item.title}>
-            <Box>
-              <Box
-                sx={{
-                  backgroundColor: "#fff",
-                  p: 1,
-                  display: "inline-block",
-                  borderRadius: 2,
-                }}
-              >
-                {item.icon}
-              </Box>
-
-              <Typography
-                sx={{
-                  fontWeight: 400,
-                  fontSize: "14px",
-                  lineHeight: "21px",
-                  color: "#64748B",
-                  my: 2,
-                }}
-              >
-                {item.title}
-              </Typography>
-              <Typography
-                sx={{
-                  fontWeight: 600,
-                  fontSize: "30px",
-                  lineHeight: "41.1px",
-                  letterSpacing: "-0.8px",
-                  color: "#1E293B",
-                }}
-              >
-                {item.value}
-              </Typography>
+          <Paper
+            elevation={4}
+            key={item.title}
+            sx={{ width: { xs: "48%", sm: "43%", md: "23%" }, p: 1 }}
+          >
+            <Box
+              sx={{
+                backgroundColor: "#fff",
+                p: 1,
+                display: "inline-block",
+                borderRadius: 2,
+              }}
+            >
+              {item.icon}
             </Box>
+
+            <Typography
+              sx={{
+                fontWeight: 400,
+                fontSize: "14px",
+                lineHeight: "21px",
+                color: "#64748B",
+                my: 2,
+              }}
+            >
+              {item.title}
+            </Typography>
+            <Typography
+              sx={{
+                fontWeight: 600,
+                fontSize: { xs: "20px", md: "30px" },
+                lineHeight: "41.1px",
+                letterSpacing: "-0.8px",
+                color: "#1E293B",
+              }}
+            >
+              {item.value}
+            </Typography>
           </Paper>
         ))}
       </Box>
@@ -172,10 +173,9 @@ const Dashboard = () => {
           <Customers />
         </Paper>
       </Box>
-      <Box>
-        <QuiltedImageList />
-      </Box>
-    </Box>
+
+      <QuiltedImageList />
+    </Container>
   );
 };
 

@@ -6,6 +6,7 @@ import {
   IconButton,
   ImageListItemBar,
   Paper,
+  Skeleton,
   Tab,
   Tabs,
   Typography,
@@ -67,63 +68,72 @@ export default function QuiltedImageList() {
           rowHeight={isMobile ? "auto" : 121}
           gap={isMobile ? 8 : 4}
         >
-          {itemData.map((item) => (
-            <ImageListItem
-              key={item.img}
-              cols={isMobile ? 1 : item.cols || 1}
-              rows={isMobile ? 1 : item.rows || 1}
-            >
-              <img
-                {...srcset(
-                  item.img,
-                  isMobile ? window.innerWidth : 121,
-                  item.rows,
-                  item.cols
-                )}
-                alt={item.title}
-                loading="lazy"
-                style={{
-                  width: "100%",
-                  height: isMobile ? "auto" : "100%",
-                  objectFit: "cover",
-                }}
-              />
-              <ImageListItemBar
-                sx={{
-                  backdropFilter: "blur(-5px)",
-                  fontWeight: 500,
-                  fontSize: "14px",
-                  lineHeight: "21px",
-                  color: "#1E293B",
-                }}
-                title={item.title}
-                subtitle={`${item.qty} served`}
-                actionIcon={
-                  <IconButton
-                    sx={{
-                      fontWeight: 500,
-                      fontSize: "14px",
-                      lineHeight: "21px",
-                      color: "#1E293B",
-                    }}
-                    aria-label={`info about ${item.title}`}
-                  >
-                    <Typography
+          {itemData.map((item) =>
+            item.img ? (
+              <ImageListItem
+                key={item.img}
+                cols={isMobile ? 1 : item.cols || 1}
+                rows={isMobile ? 1 : item.rows || 1}
+              >
+                <img
+                  {...srcset(
+                    item.img,
+                    isMobile ? window.innerWidth : 121,
+                    item.rows,
+                    item.cols
+                  )}
+                  alt={item.title}
+                  loading="lazy"
+                  style={{
+                    width: "100%",
+                    height: isMobile ? "auto" : "100%",
+                    objectFit: "cover",
+                  }}
+                />
+                <ImageListItemBar
+                  sx={{
+                    backdropFilter: "blur(-5px)",
+                    fontWeight: 500,
+                    fontSize: "14px",
+                    lineHeight: "21px",
+                    color: "#1E293B",
+                  }}
+                  title={item.title}
+                  subtitle={`${item.qty} served`}
+                  actionIcon={
+                    <IconButton
                       sx={{
-                        fontFamily: "Noto Sans",
                         fontWeight: 500,
                         fontSize: "14px",
                         lineHeight: "21px",
-                        color: "#fff",
+                        color: "#1E293B",
                       }}
+                      aria-label={`info about ${item.title}`}
                     >
-                      ${item.price?.toFixed(2)}
-                    </Typography>
-                  </IconButton>
-                }
+                      <Typography
+                        sx={{
+                          fontFamily: "Noto Sans",
+                          fontWeight: 500,
+                          fontSize: "14px",
+                          lineHeight: "21px",
+                          color: "#fff",
+                        }}
+                      >
+                        ${item.price?.toFixed(2)}
+                      </Typography>
+                    </IconButton>
+                  }
+                />
+              </ImageListItem>
+            ) : (
+              <Skeleton
+                animation="wave"
+                variant="rectangular"
+                width={"inherit"}
+                height={118}
               />
-            </ImageListItem>
-          ))}
+            )
+          )}
         </ImageList>
       </Box>,
       <Box>

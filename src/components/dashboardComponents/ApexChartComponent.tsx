@@ -273,7 +273,16 @@ export default function ApexChartComponent({
       </Box>
       <Divider sx={{ my: 2 }} />
 
-      <Box sx={{ width: width, height: height, p: 2 }}>
+      <Box
+        sx={{
+          width: width,
+          height: height,
+          p: 2,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <ReactApexChart
           options={options}
           series={series}
